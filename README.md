@@ -1,6 +1,6 @@
-# Box Critters Recritted
+# Box Critters Localbox
 
-Reopening the dusty box of the world of Box Critters! This is a Typescript server emulator using the Bun & Deno frameworks.
+Reopening the dusty box of the world of Box Critters! This is a Typescript server emulator using Deno.
 
 ## Party Switcher
 
