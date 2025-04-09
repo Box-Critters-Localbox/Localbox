@@ -1,6 +1,8 @@
 # Event Recreation Progress
 
-A checklist for each party of which rooms are finished. Not all parties will be possible due to them not being archived sadly. This list ignores tedious animations which can be done at a later date.
+A checklist for each party of which rooms are finished. Not all parties will be
+possible due to them not being archived sadly. This list ignores tedious
+animations which can be done at a later date.
 
 ## Default (no party)
 
@@ -25,7 +27,8 @@ A checklist for each party of which rooms are finished. Not all parties will be 
 
 ## Battle Bears
 
-This event had no significant changes. The Crash Site room became a default room, and is classified as that.
+This event had no significant changes. The Crash Site room became a default
+room, and is classified as that.
 
 ### Christmas
 
@@ -64,7 +67,8 @@ This event had no significant changes. The Crash Site room became a default room
 - [x] Tavern
 - [x] Port
 - [x] Shack
-- [x] **Solar System** *(The background and foreground that were archived are corrupted)*
+- [x] **Solar System** _(The background and foreground that were archived are
+      corrupted)_
 
 ### Halloween
 
@@ -78,7 +82,8 @@ This event had no significant changes. The Crash Site room became a default room
 
 ### Club Penguin Celebration
 
-- [x] Port (practically the same as `Halloween 2020`'s Port, just with a party hat on the outside of the `Shack`)
+- [x] Port (practically the same as `Halloween 2020`'s Port, just with a party
+      hat on the outside of the `Shack`)
 - [x] Shack
 
 ### CritterCon
@@ -116,8 +121,8 @@ This event had no significant changes. The Crash Site room became a default room
 
 ### New Years
 
-- [ ] Port
-*The wiki only includes a screenshot of the Port, and no other rooms.*
+- [ ] Port _The wiki only includes a screenshot of the Port, and no other
+      rooms._
 
 ### 2nd Anniversary
 
@@ -139,7 +144,8 @@ This event had no significant changes. The Crash Site room became a default room
 - [x] Port
 - [x] Shack
 - [x] Jungle
-- [x] **Box Realm (work in progress)** *(the background is the only file found so far)*
+- [x] **Box Realm (work in progress)** _(the background is the only file found
+      so far)_
 
 ### Easter
 
@@ -172,7 +178,8 @@ This event had no significant changes. The Crash Site room became a default room
 
 ### Club Penguin Celebration
 
-- [x] Port (practically the same as `Halloween 2021`'s Port, just with a party hat on the outside of the `Shack`)
+- [x] Port (practically the same as `Halloween 2021`'s Port, just with a party
+      hat on the outside of the `Shack`)
 - [x] Shack
 
 ### CritterCon

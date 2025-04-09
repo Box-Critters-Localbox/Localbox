@@ -3,3 +3,5 @@
 Thumbs.db
 accounts.json
 /node_modules
+Localbox
+/public
