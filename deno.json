@@ -1,9 +1,11 @@
 {
   "imports": {
+    "@/": "./src/",
     "@std/fs": "jsr:@std/fs@^1.0.14"
   },
   "tasks": {
-    "start": "deno run --watch --allow-net --allow-read --allow-env --env-file=.env --allow-write src/main.ts",
+    "start": "deno run --allow-net --allow-read --allow-env --env-file=.env --allow-write src/main.ts",
+    "dev": "deno run --watch --allow-net --allow-read --allow-env --env-file=.env --allow-write src/main.ts",
     "build": "deno compile --allow-net --allow-read --allow-env --env-file=.env.build --allow-write --output Localbox src/main.ts"
   },
   "compilerOptions": {

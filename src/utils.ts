@@ -6,9 +6,9 @@ import {
 } from "https://deno.land/std@0.224.0/path/mod.ts";
 import { jwtVerify, SignJWT } from "npm:jose@5.9.6";
 
-import { rooms, spawnRoom } from "../constants/world.ts";
-import { LocalPlayer, PlayerCrumb, Room } from "./types.ts";
-import parties from "../constants/parties.json" with { type: "json" };
+import { rooms, spawnRoom } from "@/constants/world.ts";
+import { LocalPlayer, PlayerCrumb, Room } from "@/types.ts";
+import parties from "@/constants/parties.json" with { type: "json" };
 
 const EXECUTABLE = Deno.env.get("EXECUTABLE") == "true";
 const BASE_DIR = EXECUTABLE
@@ -183,7 +183,7 @@ export async function updateAccount(
   property: string,
   value: unknown,
 ) {
-  if (["x", "y", "rotation", "_partyId"].includes(property)) return;
+  if (["x", "y", "rotation", "_partyId", "_mods"].includes(property)) return;
   const accounts = await getAccount(nickname);
 
   accounts.individual[property] = value;
@@ -245,12 +245,16 @@ export function getCurrentEvent(year: number): string {
     const originalStart = new Date(start);
     const originalEnd = new Date(end);
 
-    const adjustedStart = new Date(year, originalStart.getMonth(), originalStart.getDate());
+    const adjustedStart = new Date(
+      year,
+      originalStart.getMonth(),
+      originalStart.getDate(),
+    );
     const adjustedEnd = new Date(
       // Handle roll over
       originalEnd.getFullYear() > originalStart.getFullYear() ? year + 1 : year,
       originalEnd.getMonth(),
-      originalEnd.getDate()
+      originalEnd.getDate(),
     );
 
     if (testDate >= adjustedStart && testDate <= adjustedEnd) {

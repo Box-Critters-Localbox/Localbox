@@ -96,45 +96,14 @@ export type ShopData = {
   collection: Array<{ itemId: string; cost: number }>;
 };
 
-/*
-    Socket.io
-*/
-export interface ServerToClientEvents {
-  login: () => { player: LocalPlayer };
-  updateGear: () => { i: number; g: Array<string> };
-  updateCoins: () => { balance: number };
-  addItem: () => { itemId: string };
-  addEgg: () => string;
-  A: () => PlayerCrumb;
-  R: () => PlayerCrumb;
-  X: () => { i: number; x: number; y: number };
-  M: () => { i: number; m: string };
-  E: () => { i: number; e: string };
-  G: () => { i: number; g: Array<string> };
-}
-
-export interface ClientToServerEvents {
-  login: (ticket: string) => void;
-  joinLobby: () => unknown; // Unsure what this is for, I don't think the game had several servers
-  joinRoom: (
-    roomId: string,
-  ) => { name: string; roomId: string; playerCrumbs: Array<PlayerCrumb> };
-  message: (text: string) => void;
-  emote: (emote: string) => void;
-  code: (code: string, options?: string) => void;
-  addIgnore: (id: number) => void;
-  addFriend: (id: number) => void;
-  moveTo: (x: number, y: number) => void;
-  updateCritter: () => unknown; // Unsure of what this is, maybe settings?
-  updateGear: (gear: Array<string>) => void;
-  getShop: () => ShopData;
-  buyItem: (itemId: string) => void;
-  trigger: () => void;
-}
-
 export type PartySchedule = {
   [key: string]: {
     start: string | null;
     end: string | null;
   };
+};
+
+export type SocketHandlerContext = {
+  localPlayer: null | LocalPlayer;
+  localCrumb: null | PlayerCrumb;
 };

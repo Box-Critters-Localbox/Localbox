@@ -8,12 +8,12 @@ import {
 } from "https://deno.land/std@0.224.0/path/mod.ts";
 import { exists } from "jsr:@std/fs/exists";
 
-import { io } from "./io.ts";
-import * as world from "../constants/world.ts";
-import { getAccount } from "./utils.ts";
-import * as schemas from "./schema.ts";
-import * as utils from "./utils.ts";
-import parties from "../constants/parties.json" with { type: "json" };
+import { io } from "@/socket/index.ts";
+import * as world from "@/constants/world.ts";
+import { getAccount } from "@/utils.ts";
+import * as schemas from "@/schema.ts";
+import * as utils from "@/utils.ts";
+import parties from "@/constants/parties.json" with { type: "json" };
 import { extname } from "https://deno.land/std@0.212.0/path/extname.ts";
 import { parseArgs } from "jsr:@std/cli/parse-args";
 
@@ -33,6 +33,7 @@ if (!EXECUTABLE) {
 async function serveStatic(req: Request): Promise<Response> {
   const url = new URL(req.url);
   let pathname = url.pathname;
+  pathname = decodeURIComponent(pathname);
   pathname = pathname.endsWith("/") ? pathname + "index.html" : pathname;
 
   const fsPath = normalize(join(PUBLIC_DIR, pathname));
@@ -139,13 +140,17 @@ async function handler(
         let partyId = url.searchParams.get("partyId") || "default";
         const debug = url.searchParams.has("debug");
 
-        if ([
-          "today2019",
-          "today2020",
-          "today2021"
-        ].includes(partyId)) {
-          partyId = utils.getCurrentEvent(parseInt(partyId.replace('today', '')))
-        };
+        if (
+          [
+            "today2019",
+            "today2020",
+            "today2021",
+          ].includes(partyId)
+        ) {
+          partyId = utils.getCurrentEvent(
+            parseInt(partyId.replace("today", "")),
+          );
+        }
 
         if (!Object.keys(parties).includes(partyId)) {
           return Response.json({
@@ -219,14 +224,14 @@ async function handler(
 const args = parseArgs(Deno.args, {
   string: ["port"],
   default: {
-    port: "3257"
-  }
+    port: "3257",
+  },
 });
 
 if (isNaN(Number(args.port))) {
-  console.log('Port provided is not valid.')
+  console.log("Port provided is not valid.");
   Deno.exit();
-};
+}
 
 //@ts-ignore: Type issues occuring from upgrading websocket requests to Socket.io
 await serve(handler, { port: args.port });
