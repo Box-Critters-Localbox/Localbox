@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  localbox:
+    build: .
+    ports:
+      - "3257:3257"
+    environment:
+      - EXECUTABLE=false
+      - JWT_SECRET=${JWT_SECRET}
+    command: ["deno", "task", "--node-modules-dir", "start"]

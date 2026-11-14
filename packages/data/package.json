@@ -1,0 +1,6 @@
+{
+  "name": "@localbox/data",
+  "version": "0.0.0",
+  "description": "Static game data for Localbox",
+  "license": "AGPL-3.0-or-later"
+}

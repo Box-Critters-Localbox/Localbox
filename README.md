@@ -57,6 +57,20 @@ A custom party switcher has been implemented, you can change the party on the
 log-in page, or using the `/party [ID]` command in-game. For a breakdown of
 party room recreation progress, go [here](Events.md).
 
+## Plugins
+
+The server can be extended with plugins: chat filters, slash commands, rewards,
+and extra HTTP endpoints. Drop a folder into `apps/backend/plugins/` and it is
+loaded on startup. Four are bundled as examples:
+
+- `leaderboard` - `/top` shows the richest critters
+- `word-filter` - censors or blocks messages (and rejects nicknames) containing listed words
+- `motd` - welcome message on login
+- `login-streak` - daily coin rewards that grow with consecutive logins
+
+Plugins can be configured or disabled with a `config.json` in their folder. See
+the [plugin docs](DOCS/PLUGINS.md) to write your own.
+
 ## Development
 
 ### CLI
@@ -81,6 +95,39 @@ deno run start
 deno run build
 > If the command is a success, a "Localbox" executable will appear in the project directory.
 ```
+
+> Running the tests
+
+```bash
+bun run test
+```
+
+### Configuration
+
+Server settings live in an optional `localbox.config.json` in `apps/backend/`
+(next to the executable for compiled builds, or the path in `LOCALBOX_CONFIG`).
+Every key is optional, and unknown keys are rejected on startup. Secrets stay in
+environment variables (`JWT_SECRET`, `DB_PATH`).
+
+```json
+{
+  "port": 3257,
+  "startingCoins": 150,
+  "maxViolations": 100,
+  "socketRateLimits": {
+    "message": { "limit": 5, "windowMs": 5000 }
+  }
+}
+```
+
+A port passed on the command line or in `PORT` takes precedence over the file.
+
+`socketRateLimits` sets how many times a connection may send each socket event
+per window. Events over the limit are dropped, and a connection that goes over
+`maxViolations` times is disconnected. Only the events you list are overridden;
+the rest keep their defaults (see `defaultSocketRateLimits` in
+`apps/backend/src/config.ts`). Events without their own rule share the
+`default` rule.
 
 ### APIs
 

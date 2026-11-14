@@ -1,0 +1,10 @@
+.env
+.DS_Store
+Thumbs.db
+accounts.json
+*.db
+*.db-shm
+*.db-wal
+/node_modules
+Localbox
+.novalocalbox.config.json
